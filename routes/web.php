@@ -14,7 +14,15 @@
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('welcome', [
+        'foo'   => 'bar',
+        'tasks' => [
+            'Go to the store',
+            'Go to the market',
+            'Go to work',
+            'Go to the concert'
+        ]
+    ]);
 });
 
 Route::get('/about', function () {
