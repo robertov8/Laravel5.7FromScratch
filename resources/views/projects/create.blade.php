@@ -1,32 +1,40 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport"
-              content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>Document</title>
-    </head>
+@extends('layout')
 
-    <body>
-        <h1>Create a New Project</h1>
+@section('content')
+    <h1 class="title">Create a New Project</h1>
 
-        <form method="POST" action="/projects">
-            {{ csrf_field() }}
+    <form method="POST" action="/projects" style="margin-bottom: 1em;">
+        {{ csrf_field() }}
 
-            <div>
-                <label for="title"></label>
-                <input type="text" id="title" name="title" placeholder="Project title">
+        <div class="field">
+            <label for="title" class="label"></label>
+            <div class="control">
+                <input type="text"  id="title" name="title" class="input {{ $errors->has('title') ? 'is-danger' : '' }}" placeholder="Title" value="{{ old('title') }}"  required />
             </div>
+        </div>
 
-            <div>
-                <label for="description"></label>
-                <textarea name="description" id="description" cols="30" rows="10" placeholder="Project description"></textarea>
-            </div>
+        <div class="field">
+            <label for="description" class="label">Description</label>
 
-            <div>
-                <button type="submit">Create Project</button>
+            <div class="control">
+                <textarea name="description" id="description" cols="30" rows="10" class="textarea {{ $errors->has('description') ? 'is-danger' : '' }}" required>{{ old('description') }}</textarea>
             </div>
-        </form>
-    </body>
-</html>
+        </div>
+
+        <div class="field">
+            <div class="control">
+                <button type="submit" class="button is-link">Create Project</button>
+            </div>
+        </div>
+    </form>
+
+    @if($errors->any())
+        <div class="notification is-danger">
+            <ul>
+                @foreach($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+@endsection
