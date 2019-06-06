@@ -9,8 +9,16 @@
     </head>
 
     <body>
-        <div class="container">
-            @yield('content')
+        <div class="columns">
+            <div class="column"></div>
+        </div>
+
+        <div class="columns">
+            <div class="column">
+                <div class="container">
+                    @yield('content')
+                </div>
+            </div>
         </div>
     </body>
 </html>
