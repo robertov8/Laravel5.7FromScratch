@@ -11,6 +11,7 @@
 |
 */
 
+use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'PagesController@home');
@@ -33,3 +34,12 @@ Route::post('/projects/{project}/tasks', 'ProjectTasksController@store');
 
 Route::post('/completed-tasks/{task}', 'CompletedTasksController@store');
 Route::delete('/completed-tasks/{task}', 'CompletedTasksController@destroy');
+
+
+app()->singleton('example', function () {
+    return new App\Example;
+});
+
+Route::get('/test', function () {
+    dd(app('example'), app('example'));
+});
