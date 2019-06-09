@@ -43,3 +43,6 @@ app()->singleton('example', function () {
 Route::get('/test', function () {
     dd(app('example'), app('example'));
 });
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
