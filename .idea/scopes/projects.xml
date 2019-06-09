@@ -1,3 +1,0 @@
-<component name="DependencyValidationManager">
-  <scope name="projects" pattern="file[Laravel5.7FromScratch]:projects//*" />
-</component>
