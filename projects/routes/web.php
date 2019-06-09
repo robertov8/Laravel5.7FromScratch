@@ -28,7 +28,7 @@ Route::get('/contact', 'PagesController@contact');
  * DELETE /projects/1      (destroy)
  */
 
-Route::resource('projects', 'ProjectsController');
+Route::resource('projects', 'ProjectsController')->middleware('can:view,project');
 
 Route::post('/projects/{project}/tasks', 'ProjectTasksController@store');
 
