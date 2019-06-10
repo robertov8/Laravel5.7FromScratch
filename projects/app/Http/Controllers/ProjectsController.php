@@ -50,11 +50,7 @@ class ProjectsController extends Controller
 
     public function store()
     {
-        $project = Project::create($this->validateProject() + ['owner_id' => auth()->id()]);
-
-        Mail::to($project->owner->email)->send(
-            new ProjectCreated($project)
-        );
+        Project::create($this->validateProject() + ['owner_id' => auth()->id()]);
 
         return redirect('/projects');
     }
