@@ -52,7 +52,7 @@ class ProjectsController extends Controller
     {
         $project = Project::create($this->validateProject() + ['owner_id' => auth()->id()]);
 
-        Mail::to('admin@admin.com')->send(
+        Mail::to($project->owner->email)->send(
             new ProjectCreated($project)
         );
 
