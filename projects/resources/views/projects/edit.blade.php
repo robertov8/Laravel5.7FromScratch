@@ -27,6 +27,8 @@
                 <button type="submit" class="button is-link">Update Project</button>
             </div>
         </div>
+
+        @include('errors')
     </form>
 
     <form method="POST" action="/projects/{{ $project->id }}" >
