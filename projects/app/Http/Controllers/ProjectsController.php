@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Mail\ProjectCreated;
+use App\Events\ProjectCreated;
 use App\Project;
 use Illuminate\Support\Facades\Mail;
 
@@ -50,7 +50,10 @@ class ProjectsController extends Controller
 
     public function store()
     {
-        Project::create($this->validateProject() + ['owner_id' => auth()->id()]);
+        $attributes = $this->validateProject();
+        $attributes['owner_id'] = auth()->id();
+
+        $project = Project::create($attributes);
 
         return redirect('/projects');
     }
