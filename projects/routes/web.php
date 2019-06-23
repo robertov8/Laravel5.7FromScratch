@@ -11,7 +11,10 @@
 |
 */
 
+use App\Notifications\SubscriptionRenewFailed;
+use App\User;
 use Illuminate\Filesystem\Filesystem;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'PagesController@home');
@@ -46,3 +49,9 @@ Route::get('/test', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/notify', function () {
+    $user = User::first();
+    $user->notify(new SubscriptionRenewFailed());
+    return 'Done';
+});
