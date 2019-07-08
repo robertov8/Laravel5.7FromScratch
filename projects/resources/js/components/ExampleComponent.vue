@@ -3,7 +3,7 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">Example Component</div>
+                    <div class="card-header" v-text="name"></div>
 
                     <div class="card-body">
                         I'm an example component.
@@ -16,8 +16,18 @@
 
 <script>
     export default {
+        data() {
+            return { name: 'Laracasts' };
+        },
+
         mounted() {
             console.log('Component mounted.')
         }
     }
 </script>
+
+<style type="text/css" scoped>
+    .card {
+        background: pink;
+    }
+</style>

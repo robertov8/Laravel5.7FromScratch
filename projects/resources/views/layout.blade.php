@@ -6,6 +6,7 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css">
         <title>@yield('title', 'Laracasts')</title>
+        <link href="{{ mix('css/app.css') }}" rel="stylesheet">
 
         <style>
             .is-completed {
@@ -15,16 +16,20 @@
     </head>
 
     <body>
-        <div class="columns">
-            <div class="column"></div>
-        </div>
+        <div id="app">
+            <div class="columns">
+                <div class="column"></div>
+            </div>
 
-        <div class="columns">
-            <div class="column">
-                <div class="container">
-                    @yield('content')
+            <div class="columns">
+                <div class="column">
+                    <div class="container">
+                        @yield('content')
+                    </div>
                 </div>
             </div>
         </div>
+
+        <script src="{{ mix('js/app.js') }}" defer></script>
     </body>
 </html>

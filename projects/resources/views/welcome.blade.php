@@ -3,6 +3,8 @@
 @section('content')
     <h1>My {{ $foo }} Website!</h1>
 
+    <example-component></example-component>
+
     <ul>
         @foreach($tasks as $task)
             <li>{{ $task }}</li>
