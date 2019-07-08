@@ -16,6 +16,7 @@ use App\User;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
+use Symfony\Component\HttpFoundation\Request;
 
 Route::get('/', 'PagesController@home');
 Route::get('/about', 'PagesController@about');
@@ -55,3 +56,12 @@ Route::get('/notify', function () {
     $user->notify(new SubscriptionRenewFailed());
     return 'Done';
 });
+
+Route::get('/session/create', function (Request $request) {
+    return view('session.create');
+})->name('session.create');
+
+Route::post('/session', function () {
+    flash('Your project has been created.');
+    return redirect()->route('session.create');
+})->name('session.store');
